@@ -1,4 +1,4 @@
-frameworkDrivers/instancias/ClienteBD.class
-br/pucrs/fsd/Controller.class
-dominio/entidades/ClienteModel.class
-br/pucrs/fds/FdsApplication.class
+br\pucrs\fds\FdsApplication.class
+br\pucrs\fsd\Controller.class
+dominio\entidades\ClienteModel.class
+frameworkDrivers\instancias\ClienteBD.class

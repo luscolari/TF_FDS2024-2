@@ -1,4 +1,4 @@
-package br.pucrs.fsd;
+package br.pucrs.fds;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

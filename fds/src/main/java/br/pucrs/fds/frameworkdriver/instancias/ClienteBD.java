@@ -1,4 +1,4 @@
-package frameworkDrivers.instancias;
+package br.pucrs.fds.frameworkdriver.instancias;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

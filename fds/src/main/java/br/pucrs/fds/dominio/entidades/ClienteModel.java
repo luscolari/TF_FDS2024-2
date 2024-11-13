@@ -1,4 +1,4 @@
-package dominio.entidades;
+package br.pucrs.fds.dominio.entidades;
 
 public class ClienteModel {
     private int codigo;
