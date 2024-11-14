@@ -1,21 +1,19 @@
-package frameworkDrivers.interfaces;
+package br.pucrs.fds.frameworkdriver.interfaces;
 
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.data.repository.CrudRepository;
 
-import frameworkDrivers.instancias.ClienteBD;
+import br.pucrs.fds.dominio.entidades.ClienteModel;
+//import frameworkdriver.instancias.ClienteBD;
 
 //--> extends CrudRepository<ClienteBD,Long>
 public interface IClienteJPA {
     //List<ClienteBD> findAll();
     //Optional<ClienteBD> findById(long id);
-    List<Livro> getAll();
-    List<String> getTitulos();
-    List<String> getAutores();
-    List<Livro> getLivrosDoAutor(String autor);
-    Livro getLivroTitulo(String titulo);
-    boolean cadastraLivroNovo(Livro livro);
-    boolean removeLivro(long codigo);
+    List<ClienteModel> getAll();
+    List<String> getCodigo();
+    List<String> getNome();
+    List<String> getEmail();
 }

@@ -1,17 +1,18 @@
-package br.pucrs.fds;
+package br.pucrs.fds.adaptadoresInterface.controller;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.pucrs.fds.frameworkdriver.interfaces.IClienteJPA;
+
 @RestController
 public class Controller {
 
-    private IAcervoRepository livros;
+    private IClienteJPA clientes;
 
-    @Autowired
-    public Controller(IAcervoRepository livros) {
-        this.livros = livros; 
+    public Controller() {
+        this.clientes = clientes; 
     }
 
     @GetMapping("")
@@ -22,8 +23,8 @@ public class Controller {
 
     @GetMapping("/clientes")
     @CrossOrigin(origins = "*")
-    public List<Livro> getListaLivros() {
-        return livros.getAll();
+    public List<IClienteJPA> getListaLivros() {
+        return clientes.getAll();
     }
   
 }
