@@ -1,4 +1,10 @@
 package br.pucrs.fds.adaptadoresInterface.controller;
+import br.pucrs.fds.adaptadoresInterface.repositorios.ClientesRepositorio;
+import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
+import br.pucrs.fds.aplicacao.useCases.PegaClientesUC;
+import br.pucrs.fds.dominio.entidades.ClienteModel;
+import java.util.List;
+
 
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,9 +15,9 @@ import br.pucrs.fds.frameworkdriver.interfaces.IClienteJPA;
 @RestController
 public class Controller {
 
-    private IClienteJPA clientes;
+    private PegaClientesUC clientes;
 
-    public Controller() {
+    public Controller(PegaClientesUC clientes) {
         this.clientes = clientes; 
     }
 
@@ -23,8 +29,8 @@ public class Controller {
 
     @GetMapping("/clientes")
     @CrossOrigin(origins = "*")
-    public List<IClienteJPA> getListaLivros() {
-        return clientes.getAll();
+    public List <ClienteDTO> getListaClientes() {
+        return clientes.pegaClienteServico();
     }
   
 }
