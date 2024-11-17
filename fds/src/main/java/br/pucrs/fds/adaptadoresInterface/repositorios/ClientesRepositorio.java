@@ -27,11 +27,12 @@ public class ClientesRepositorio {
     }
 
     public ClienteModel findById(long id) {
-        Optional <ClienteBD> clientes = cliente.findById(id);
-        if(clientes.isPresent()) {
-            return Adapter.clienteBD_to_Model(clientes.get());
+        Optional<ClienteBD> clienteOptional = cliente.findById(id);
+        if (clienteOptional.isPresent()) {
+            return Adapter.clienteBD_to_Model(clienteOptional.get());
         } else {
-            return null;
+            return null; 
         }
     }
+    
 }

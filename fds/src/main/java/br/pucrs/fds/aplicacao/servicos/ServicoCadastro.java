@@ -18,4 +18,8 @@ public class ServicoCadastro {
     public List <ClienteModel> pegaTodosClientesBanco (){
         return clientes.findAll();
     }
+
+    public ClienteModel acharCliente (long id){
+       return clientes.findById(id);
+    }
 }
