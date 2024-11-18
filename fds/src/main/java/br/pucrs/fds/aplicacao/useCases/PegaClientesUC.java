@@ -5,10 +5,8 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
-import br.pucrs.fds.aplicacao.dtos.AplicativoDTO;
 import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
 import br.pucrs.fds.aplicacao.servicos.ServicoCadastro;
-import br.pucrs.fds.aplicacao.servicos.ServicoTesteApp;
 import br.pucrs.fds.dominio.entidades.ClienteModel;
 
 @Component

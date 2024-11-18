@@ -18,5 +18,6 @@ private ServicoTesteApp servicoTeste;
 
     public List <AplicativoDTO> pegaAppsServico(){
         return servicoTeste.pegaTodosAplicatviosBanco().stream().map(app -> Adapter.aplicativoModel_to_DTO(app)).toList();
-}
+    }
+
 }

@@ -7,12 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
 import br.pucrs.fds.dominio.entidades.AplicativoModel;
-import br.pucrs.fds.dominio.entidades.ClienteModel;
-import br.pucrs.fds.frameworkdriver.instancias.AplicativoBD;
-import br.pucrs.fds.frameworkdriver.instancias.ClienteBD;
 
 import java.util.List;
-import java.util.Optional;
 
 import br.pucrs.fds.frameworkdriver.interfaces.IAplicativoJPA;
 
