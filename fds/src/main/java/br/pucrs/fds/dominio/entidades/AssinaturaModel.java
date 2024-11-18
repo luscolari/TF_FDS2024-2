@@ -1,5 +1,10 @@
 package br.pucrs.fds.dominio.entidades;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
+import br.pucrs.fds.dominio.extras.TipoAssinatura;
+
 public class AssinaturaModel {
     private long codigo;
     private AplicativoModel aplicativo;
@@ -13,6 +18,13 @@ public class AssinaturaModel {
         this.cliente = cliente;
         this.inicioVigencia = inicioVigencia;
         this.fimVigencia = fimVigencia;
+    }
+
+    public TipoAssinatura valida(LocalDate diaAtual){
+        if (LocalDate.parse(fimVigencia.replace("/", "-"),DateTimeFormatter.ofPattern("d-M-u")).isAfter(diaAtual)){
+            return TipoAssinatura.ATIVAS;
+        }
+        return TipoAssinatura.CANCELADAS;
     }
 
     public long getCodigo() {

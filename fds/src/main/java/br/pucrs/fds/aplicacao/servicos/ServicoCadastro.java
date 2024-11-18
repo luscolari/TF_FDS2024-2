@@ -1,5 +1,6 @@
 package br.pucrs.fds.aplicacao.servicos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import br.pucrs.fds.adaptadoresInterface.repositorios.ClientesRepositorio;
 import br.pucrs.fds.dominio.entidades.AplicativoModel;
 import br.pucrs.fds.dominio.entidades.AssinaturaModel;
 import br.pucrs.fds.dominio.entidades.ClienteModel;
+import br.pucrs.fds.dominio.extras.TipoAssinatura;
 
 @Service
 public class ServicoCadastro {
@@ -51,5 +53,13 @@ public class ServicoCadastro {
 
     public List<AssinaturaModel> pegaAssinaturasAplicativo(long id) {
         return assinaturas.findAll().stream().filter(as -> as.getAplicativo().getCodigo() == id).toList();
+    }
+
+    public List<AssinaturaModel> pegaAssinaturasTipo(TipoAssinatura tipo) {
+        if (tipo == TipoAssinatura.TODAS){
+            return pegaTodasAssinaturasBanco();
+        }
+        LocalDate currentDate = LocalDate.now();  
+        return assinaturas.findAll().stream().filter(as -> as.valida(currentDate) == tipo).toList();
     }
 }

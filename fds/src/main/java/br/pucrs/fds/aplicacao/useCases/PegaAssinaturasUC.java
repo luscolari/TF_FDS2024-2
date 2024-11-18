@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
 import br.pucrs.fds.aplicacao.dtos.AssinaturaDTO;
 import br.pucrs.fds.aplicacao.servicos.ServicoCadastro;
+import br.pucrs.fds.dominio.extras.TipoAssinatura;
 
 @Component
 public class PegaAssinaturasUC {
@@ -26,6 +27,9 @@ public class PegaAssinaturasUC {
     }
     public List<AssinaturaDTO> pegaAssinaturasAplicativoServico(long id) {
         return servicoCadastro.pegaAssinaturasAplicativo(id).stream().map(as -> Adapter.assinaturaModel_to_DTO(as)).toList();
+    }
+    public List<AssinaturaDTO> pegaAssinaturasTipoServico(TipoAssinatura tipo) {
+        return servicoCadastro.pegaAssinaturasTipo(tipo).stream().map(as -> Adapter.assinaturaModel_to_DTO(as)).toList();
     }
     
 }

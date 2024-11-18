@@ -5,6 +5,8 @@ import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
 import br.pucrs.fds.aplicacao.useCases.PegaAplicativosUC;
 import br.pucrs.fds.aplicacao.useCases.PegaAssinaturasUC;
 import br.pucrs.fds.aplicacao.useCases.PegaClientesUC;
+import br.pucrs.fds.dominio.extras.TipoAssinatura;
+
 import java.util.List;
 
 
@@ -50,6 +52,12 @@ public class Controller {
     @CrossOrigin(origins = "*")
     public List <AssinaturaDTO> getListaAssinaturas() {
         return assinaturas.pegaAssinaturasServico();
+    }
+
+    @GetMapping("/assinaturas/{tipo}")
+    @CrossOrigin(origins = "*")
+    public List <AssinaturaDTO> getListaAssinaturasTipo(@PathVariable("tipo") TipoAssinatura tipo) {
+        return assinaturas.pegaAssinaturasTipoServico(tipo);
     }
 
     @GetMapping("/asscli/{id}")
