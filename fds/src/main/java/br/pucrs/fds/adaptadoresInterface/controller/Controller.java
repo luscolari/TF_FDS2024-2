@@ -1,7 +1,9 @@
 package br.pucrs.fds.adaptadoresInterface.controller;
+
 import br.pucrs.fds.aplicacao.dtos.AplicativoDTO;
 import br.pucrs.fds.aplicacao.dtos.AssinaturaDTO;
 import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
+import br.pucrs.fds.aplicacao.useCases.CadastroAssinaturaUC;
 import br.pucrs.fds.aplicacao.useCases.PegaAplicativosUC;
 import br.pucrs.fds.aplicacao.useCases.PegaAssinaturasUC;
 import br.pucrs.fds.aplicacao.useCases.PegaClientesUC;
@@ -9,12 +11,12 @@ import br.pucrs.fds.dominio.extras.TipoAssinatura;
 
 import java.util.List;
 
-
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
 
 @RestController
 public class Controller {
@@ -22,53 +24,61 @@ public class Controller {
     private PegaClientesUC clientes;
     private PegaAplicativosUC aplicativos;
     private PegaAssinaturasUC assinaturas;
-    
-    public Controller(PegaClientesUC clientes, PegaAplicativosUC aplicativos, PegaAssinaturasUC assinaturas) {
-        this.clientes = clientes; 
+    private CadastroAssinaturaUC cadastros;
+
+    public Controller(PegaClientesUC clientes, PegaAplicativosUC aplicativos, PegaAssinaturasUC assinaturas,
+            CadastroAssinaturaUC cadastros) {
+        this.clientes = clientes;
         this.aplicativos = aplicativos;
         this.assinaturas = assinaturas;
+        this.cadastros = cadastros;
     }
 
     @GetMapping("")
     @CrossOrigin(origins = "*")
-    public String inicio(){
+    public String inicio() {
         return "Teste";
     }
 
-    @GetMapping("/clientes")
+    // fecho
+    @GetMapping("/servcad/clientes")
     @CrossOrigin(origins = "*")
-    public List <ClienteDTO> getListaClientes() {
+    public List<ClienteDTO> getListaClientes() {
         return clientes.pegaClienteServico();
     }
 
-    @GetMapping("/aplicativos")
+    // fecho
+    @GetMapping("/servcad/aplicativos")
     @CrossOrigin(origins = "*")
-    public List <AplicativoDTO> getListaAplicativos() {
+    public List<AplicativoDTO> getListaAplicativos() {
         return aplicativos.pegaAppsServico();
     }
 
     /* Para fins de debug */
-    @GetMapping("/assinaturas")
+    @GetMapping("/servcad/Listaassinaturas")
     @CrossOrigin(origins = "*")
-    public List <AssinaturaDTO> getListaAssinaturas() {
+    public List<AssinaturaDTO> getListaAssinaturas() {
         return assinaturas.pegaAssinaturasServico();
     }
 
+    // nao terminado --> precisamos ver os tipos
     @GetMapping("/assinaturas/{tipo}")
     @CrossOrigin(origins = "*")
-    public List <AssinaturaDTO> getListaAssinaturasTipo(@PathVariable("tipo") TipoAssinatura tipo) {
+    public List<AssinaturaDTO> getListaAssinaturasTipo(@PathVariable("tipo") TipoAssinatura tipo) {
         return assinaturas.pegaAssinaturasTipoServico(tipo);
     }
 
-    @GetMapping("/asscli/{id}")
+    // feito
+    @GetMapping("/servcad/asscli/{id}")
     @CrossOrigin(origins = "*")
-    public List <AssinaturaDTO> getListaAssinaturasCliente(@PathVariable("id") long id) {
+    public List<AssinaturaDTO> getListaAssinaturasCliente(@PathVariable("id") long id) {
         return assinaturas.pegaAssinaturasClienteServico(id);
     }
 
-    @GetMapping("/assapp/{id}")
+    // feito
+    @GetMapping("/servcad/assapp/{id}")
     @CrossOrigin(origins = "*")
-    public List <AssinaturaDTO> getListaAssinaturasAplicativo(@PathVariable("id") long id) {
+    public List<AssinaturaDTO> getListaAssinaturasAplicativo(@PathVariable("id") long id) {
         return assinaturas.pegaAssinaturasAplicativoServico(id);
     }
 
@@ -77,5 +87,18 @@ public class Controller {
     public ClienteDTO acharCliente(@PathVariable("id") long id) {
         return clientes.acharCliente(id);
     }
-  
+
+    // Body data --> para receber dados no corpo da mensagem
+    @GetMapping("/servcad/assinaturas/{idCliente}/{idApp}")
+    @CrossOrigin(origins = "*")
+    public AssinaturaDTO cadastraAssinatura(@PathVariable("idCliente") long idCliente, @PathVariable("idApp") long idApp) {
+        return cadastros.cadastroAssinatura(idCliente, idApp);
+    }
+
+    @GetMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}/{custo}")
+    @CrossOrigin(origins = "*")
+    public AplicativoDTO atualizaCusto(@PathVariable ("idAplicativo") long idAplicativo, @PathVariable ("custo") double custo) throws Exception {
+        return cadastros.atualizaCusto(idAplicativo, custo);
+    }
+
 }

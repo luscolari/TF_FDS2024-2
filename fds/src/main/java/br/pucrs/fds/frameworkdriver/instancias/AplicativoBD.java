@@ -29,5 +29,9 @@ public class AplicativoBD {
         return custoMensal;
     }
 
+    public void setCMensal(double custo) {
+        custoMensal = custo;
+    }
+
 }
  

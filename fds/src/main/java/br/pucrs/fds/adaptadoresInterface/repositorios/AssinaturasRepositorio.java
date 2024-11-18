@@ -33,4 +33,10 @@ public class AssinaturasRepositorio {
                 .map(as -> Adapter.assinaturaBD_to_Model(as))
                 .toList();
     }
+
+    public AssinaturaModel cadastroAssinatura (AssinaturaBD assinaturaNova){
+        return Adapter.assinaturaBD_to_Model(assinatura.save(assinaturaNova));
+    }
+
+   
 }

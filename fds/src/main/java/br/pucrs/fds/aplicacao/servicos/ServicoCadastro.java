@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
 import br.pucrs.fds.adaptadoresInterface.repositorios.AplicativosRepositorio;
 import br.pucrs.fds.adaptadoresInterface.repositorios.AssinaturasRepositorio;
 import br.pucrs.fds.adaptadoresInterface.repositorios.ClientesRepositorio;
@@ -61,5 +62,24 @@ public class ServicoCadastro {
         }
         LocalDate currentDate = LocalDate.now();  
         return assinaturas.findAll().stream().filter(as -> as.valida(currentDate) == tipo).toList();
+    }
+
+    public AssinaturaModel cadastroAssinatura (long idCliente, long idApp){
+        ClienteModel cliente = acharCliente(idCliente);
+        AplicativoModel app = pegaTodosAplicatviosBanco().stream().filter(ap -> ap.getCodigo() == idApp).toList().getFirst();
+        LocalDate currentDate = LocalDate.now();
+        LocalDate dataExpiracao = currentDate.plusDays(37);
+        String s = currentDate.toString();
+        String[] partes = s.split("-");
+        String novaString = partes[2] + "/" + partes[1] + "/" + partes[0];
+        s = dataExpiracao.toString();
+        partes = s.split("-");
+        String novaString2 = partes[2] + "/" + partes[1] + "/" + partes[0];
+        AssinaturaModel novaAssinatura = new AssinaturaModel(7, app, cliente, novaString, novaString2);
+        return assinaturas.cadastroAssinatura(Adapter.assinaturaModel_to_BD(novaAssinatura));
+    }
+
+    public AplicativoModel atualizaCusto (long idApp, double custoNovo) throws Exception{
+        return aplicativos.atualizaCusto(idApp, custoNovo);
     }
 }

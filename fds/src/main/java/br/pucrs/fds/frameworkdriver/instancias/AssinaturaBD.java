@@ -15,7 +15,7 @@ public class AssinaturaBD {
     private String inicioVigencia;
     private String fimVigencia;
 
-    public AssinaturaBD(int codigo, AplicativoBD aplicativo, ClienteBD cliente, String inicioVigencia, String fimVigencia) {
+    public AssinaturaBD(long codigo, AplicativoBD aplicativo, ClienteBD cliente, String inicioVigencia, String fimVigencia) {
         this.codigo = codigo;
         this.aplicativo = aplicativo;
         this.cliente = cliente;

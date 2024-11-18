@@ -21,6 +21,11 @@ public class Adapter {
         return new ClienteDTO(bd.getCodigo(), bd.getNome(), bd.getEmail());
     }
 
+    public static ClienteBD clienteModel_to_BD(ClienteModel bd){
+
+        return new ClienteBD(bd.getCodigo(), bd.getNome(), bd.getEmail());
+    }
+
     public static AplicativoDTO aplicativoModel_to_DTO(AplicativoModel bd){
 
         return new AplicativoDTO(bd.getCodigo(), bd.getNome(), bd.getCMensal());
@@ -29,6 +34,11 @@ public class Adapter {
     public static AplicativoModel aplicativoBD_to_Model(AplicativoBD bd){
 
         return new AplicativoModel(bd.getCodigo(), bd.getNome(), bd.getCMensal());
+    }
+
+    public static AplicativoBD aplicativoModel_to_BD(AplicativoModel bd){
+
+        return new AplicativoBD(bd.getCodigo(), bd.getNome(), bd.getCMensal());
     }
 
     public static AssinaturaModel assinaturaBD_to_Model(AssinaturaBD bd){
@@ -43,6 +53,14 @@ public class Adapter {
         return new AssinaturaDTO(bd.getCodigo(),
                                    Adapter.aplicativoModel_to_DTO(bd.getAplicativo()),
                                    Adapter.clienteModel_to_DTO(bd.getCliente()),
+                                   bd.getInicioV(),
+                                   bd.getFimV());
+    }
+
+    public static AssinaturaBD assinaturaModel_to_BD(AssinaturaModel bd){
+        return new AssinaturaBD(bd.getCodigo(),
+                                   Adapter.aplicativoModel_to_BD(bd.getAplicativo()),
+                                   Adapter.clienteModel_to_BD(bd.getCliente()),
                                    bd.getInicioV(),
                                    bd.getFimV());
     }
