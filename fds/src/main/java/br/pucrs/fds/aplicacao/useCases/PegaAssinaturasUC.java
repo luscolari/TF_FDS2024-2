@@ -31,5 +31,9 @@ public class PegaAssinaturasUC {
     public List<AssinaturaDTO> pegaAssinaturasTipoServico(TipoAssinatura tipo) {
         return servicoCadastro.pegaAssinaturasTipo(tipo).stream().map(as -> Adapter.assinaturaModel_to_DTO(as)).toList();
     }
+
+   public boolean ativoOuNao(long idAss){
+        return servicoCadastro.ativoOuNao(idAss);
+   }
     
 }

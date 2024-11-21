@@ -2,6 +2,7 @@ package br.pucrs.fds.aplicacao.servicos;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -81,5 +82,19 @@ public class ServicoCadastro {
 
     public AplicativoModel atualizaCusto (long idApp, double custoNovo) throws Exception{
         return aplicativos.atualizaCusto(idApp, custoNovo);
+    }
+
+    public boolean ativoOuNao (long idAss){
+        Optional<AssinaturaModel> assinaturaValida;
+        AssinaturaModel ass
+        ;
+        assinaturaValida = assinaturas.findById(idAss);
+        if(assinaturaValida.isPresent()){
+            ass = assinaturaValida.get();
+        } else {
+            return false;
+        }
+        boolean resposta = (ass.valida(LocalDate.now()) == TipoAssinatura.ATIVAS) ? true : false;
+        return resposta;
     }
 }

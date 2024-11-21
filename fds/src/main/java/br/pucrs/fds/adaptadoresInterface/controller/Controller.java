@@ -101,4 +101,10 @@ public class Controller {
         return cadastros.atualizaCusto(idAplicativo, custo);
     }
 
+    @GetMapping("/assinvalida/{idAss}")
+    @CrossOrigin(origins = "*")
+    public boolean ativoOuNao (@PathVariable ("idAss") long idAss){
+        return assinaturas.ativoOuNao(idAss);
+    }
+
 }

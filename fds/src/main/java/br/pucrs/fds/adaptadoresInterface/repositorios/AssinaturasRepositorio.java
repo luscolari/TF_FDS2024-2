@@ -10,6 +10,7 @@ import br.pucrs.fds.frameworkdriver.instancias.AssinaturaBD;
 import br.pucrs.fds.frameworkdriver.interfaces.IAssinaturaJPA;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Repository
@@ -26,12 +27,11 @@ public class AssinaturasRepositorio {
         return assinatura.findAll().stream().map(as -> Adapter.assinaturaBD_to_Model(as)).toList();
     }
 
-    public List<AssinaturaModel> findById(long id) {
+    public Optional<AssinaturaModel> findById(long id) {
         List<AssinaturaBD> assinaturas = assinatura.findAll();
         return assinaturas.stream()
                 .filter(ass -> ass.getCodigo()==id)
-                .map(as -> Adapter.assinaturaBD_to_Model(as))
-                .toList();
+                .map(as -> Adapter.assinaturaBD_to_Model(as)).findFirst();
     }
 
     public AssinaturaModel cadastroAssinatura (AssinaturaBD assinaturaNova){
