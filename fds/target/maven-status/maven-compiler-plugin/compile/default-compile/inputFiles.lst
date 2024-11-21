@@ -1,17 +1,26 @@
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/interfaces/IClienteJPA.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/interfaces/IAplicativoJPA.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/adapter/Adapter.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/servicos/ServicoTesteApp.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/instancias/AplicativoBD.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/controller/Controller.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/useCases/PegaClientesUC.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/entidades/ClienteModel.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/useCases/PegaAplicativosUC.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/dtos/ClienteDTO.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/FdsApplication.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/repositorios/AplicativosRepositorio.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/repositorios/ClientesRepositorio.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/dtos/AplicativoDTO.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/instancias/ClienteBD.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/servicos/ServicoCadastro.java
-/workspaces/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/entidades/AplicativoModel.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/entidades/AplicativoModel.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/servicos/ServicoCadastro.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/interfaces/IClienteJPA.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/useCases/PegaAssinaturasUC.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/repositorios/AplicativosRepositorio.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/interfaces/IAssinaturaJPA.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/repositorios/ClientesRepositorio.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/controller/Controller.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/useCases/PegaClientesUC.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/interfaces/IAplicativoJPA.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/instancias/AssinaturaBD.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/entidades/teste.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/dtos/ClienteDTO.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/instancias/ClienteBD.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/FdsApplication.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/extras/TipoAssinatura.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/repositorios/AssinaturasRepositorio.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/frameworkdriver/instancias/AplicativoBD.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/dtos/AssinaturaDTO.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/useCases/PegaAplicativosUC.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/entidades/AssinaturaModel.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/adaptadoresInterface/adapter/Adapter.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/dtos/AplicativoDTO.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/useCases/CadastroAssinaturaUC.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/aplicacao/servicos/ServicoTesteApp.java
+/Users/beatrizcavalari/Documents/Faculdade/Fundamentos de Software/TF_FDS2024-2/fds/src/main/java/br/pucrs/fds/dominio/entidades/ClienteModel.java

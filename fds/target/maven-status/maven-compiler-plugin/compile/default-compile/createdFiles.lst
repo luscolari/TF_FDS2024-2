@@ -1,0 +1,9 @@
+br/pucrs/fds/dominio/entidades/AssinaturaModel.class
+br/pucrs/fds/aplicacao/useCases/CadastroAssinaturaUC.class
+br/pucrs/fds/dominio/extras/TipoAssinatura.class
+br/pucrs/fds/aplicacao/dtos/AssinaturaDTO.class
+br/pucrs/fds/aplicacao/useCases/PegaAssinaturasUC.class
+br/pucrs/fds/dominio/entidades/teste.class
+br/pucrs/fds/frameworkdriver/interfaces/IAssinaturaJPA.class
+br/pucrs/fds/frameworkdriver/instancias/AssinaturaBD.class
+br/pucrs/fds/adaptadoresInterface/repositorios/AssinaturasRepositorio.class

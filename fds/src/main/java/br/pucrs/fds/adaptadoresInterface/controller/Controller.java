@@ -89,17 +89,22 @@ public class Controller {
     }
 
     // Body data --> para receber dados no corpo da mensagem
-    @GetMapping("/servcad/assinaturas/{idCliente}/{idApp}")
+    //arrumando para POST --> ainda não certo
+    @PostMapping("/servcad/assinaturas")
     @CrossOrigin(origins = "*")
-    public AssinaturaDTO cadastraAssinatura(@PathVariable("idCliente") long idCliente, @PathVariable("idApp") long idApp) {
+    public AssinaturaDTO cadasAssinatura(@RequestBody List<Long> ids) {
+        long idCliente = ids.get(0);
+        long idApp = ids.get(1);
+
         return cadastros.cadastroAssinatura(idCliente, idApp);
     }
 
-    @GetMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}/{custo}")
+    @PostMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}")
     @CrossOrigin(origins = "*")
-    public AplicativoDTO atualizaCusto(@PathVariable ("idAplicativo") long idAplicativo, @PathVariable ("custo") double custo) throws Exception {
+    public AplicativoDTO atualizaCustoPOST(@PathVariable ("idAplicativo") long idAplicativo, @RequestBody double custo) throws Exception {
         return cadastros.atualizaCusto(idAplicativo, custo);
     }
+
 
     @GetMapping("/assinvalida/{idAss}")
     @CrossOrigin(origins = "*")
