@@ -6,9 +6,11 @@ import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
 import br.pucrs.fds.dominio.entidades.AplicativoModel;
 import br.pucrs.fds.dominio.entidades.AssinaturaModel;
 import br.pucrs.fds.dominio.entidades.ClienteModel;
+import br.pucrs.fds.dominio.entidades.PagamentoModel;
 import br.pucrs.fds.frameworkdriver.instancias.AplicativoBD;
 import br.pucrs.fds.frameworkdriver.instancias.AssinaturaBD;
 import br.pucrs.fds.frameworkdriver.instancias.ClienteBD;
+import br.pucrs.fds.frameworkdriver.instancias.PagamentosBD;
 
 public class Adapter {
     public static ClienteModel clienteBD_to_Model(ClienteBD bd){
@@ -63,5 +65,9 @@ public class Adapter {
                                    Adapter.clienteModel_to_BD(bd.getCliente()),
                                    bd.getInicioV(),
                                    bd.getFimV());
+    }
+
+    public static PagamentoModel pagamentosBD_to_Model(PagamentosBD bd){
+        return new PagamentoModel(bd.getCodigo(), Adapter.assinaturaBD_to_Model(bd.getAssinatura()), bd.getValorPago(), bd.getDataPagamento(), bd.getPromocao());
     }
 }
