@@ -1,12 +1,17 @@
 package br.pucrs.fds.adaptadoresInterface.adapter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import br.pucrs.fds.aplicacao.dtos.AplicativoDTO;
 import br.pucrs.fds.aplicacao.dtos.AssinaturaDTO;
 import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
+import br.pucrs.fds.aplicacao.dtos.PedidoPagamentoDTO;
 import br.pucrs.fds.dominio.entidades.AplicativoModel;
 import br.pucrs.fds.dominio.entidades.AssinaturaModel;
 import br.pucrs.fds.dominio.entidades.ClienteModel;
 import br.pucrs.fds.dominio.entidades.PagamentoModel;
+import br.pucrs.fds.dominio.entidades.PedidoPagamentoModel;
 import br.pucrs.fds.frameworkdriver.instancias.AplicativoBD;
 import br.pucrs.fds.frameworkdriver.instancias.AssinaturaBD;
 import br.pucrs.fds.frameworkdriver.instancias.ClienteBD;
@@ -68,6 +73,19 @@ public class Adapter {
     }
 
     public static PagamentoModel pagamentosBD_to_Model(PagamentosBD bd){
-        return new PagamentoModel(bd.getCodigo(), Adapter.assinaturaBD_to_Model(bd.getAssinatura()), bd.getValorPago(), bd.getDataPagamento(), bd.getPromocao());
+        PagamentoModel pagamento = new PagamentoModel(bd.getCodigo(), Adapter.assinaturaBD_to_Model(bd.getAssinatura()), bd.getValorPago(), bd.getDataPagamento(), bd.getPromocao());
+        if (!bd.isValida()){
+            pagamento.setInvalido();
+        }
+        return pagamento;
     }
+
+    public static PagamentosBD pagamentosModel_to_BD(PagamentoModel bd){
+        return new PagamentosBD(bd.getCodigo(), Adapter.assinaturaModel_to_BD(bd.getAssinatura()), bd.getValorPago(), bd.getDataPagamento(), bd.getPromocao(), !bd.isInvalido());
+    }
+
+    public static PedidoPagamentoModel pedidoPagamentoDTO_to_Model(PedidoPagamentoDTO pd){
+        return new PedidoPagamentoModel(pd.getCodigo(), LocalDate.parse(pd.getDataPedido(),DateTimeFormatter.ofPattern("d/M/u")), pd.getValorPago(), pd.getDesconto());
+    }
+
 }

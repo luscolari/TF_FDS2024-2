@@ -11,7 +11,8 @@ import br.pucrs.fds.aplicacao.servicos.ServicoCadastro;
 @Component
 public class CadastroAssinaturaUC {
     private ServicoCadastro servicoCadastro;
-     @Autowired
+    
+    @Autowired
     public CadastroAssinaturaUC(ServicoCadastro servicoCadastro){
         this.servicoCadastro = servicoCadastro;
     }

@@ -1,14 +1,12 @@
 package br.pucrs.fds.aplicacao.dtos;
 
-import java.time.LocalDate;
-
 public class PedidoPagamentoDTO {
     private long codigo;
-    private LocalDate dataPedido;
+    private String dataPedido;
     private float valorPago;
     private String desconto;
 
-    public PedidoPagamentoDTO(long codigo, LocalDate dataPedido, float valorPago, String desconto) {
+    public PedidoPagamentoDTO(long codigo, String dataPedido, float valorPago, String desconto) {
         this.codigo = codigo;
         this.dataPedido = dataPedido;
         this.valorPago = valorPago;
@@ -19,7 +17,7 @@ public class PedidoPagamentoDTO {
         return codigo;
     }
 
-    public LocalDate getDataPedido() {
+    public String getDataPedido() {
         return dataPedido;
     }
 

@@ -16,13 +16,15 @@ public class PagamentosBD {
     private float valorPago;
     private LocalDate dataPagamento;
     private String promocao;
+    private Boolean valida;
 
-    public PagamentosBD(long codigo, AssinaturaBD assinatura, float valorPago, LocalDate dataPagamento, String promocao) {
+    public PagamentosBD(long codigo, AssinaturaBD assinatura, float valorPago, LocalDate dataPagamento, String promocao, Boolean valida) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
         this.dataPagamento = dataPagamento;
         this.promocao = promocao;
+        this.valida = valida;
     }
 
     protected PagamentosBD(){}
@@ -45,5 +47,9 @@ public class PagamentosBD {
 
     public String getPromocao() {
         return promocao;
+    }
+    
+    public Boolean isValida() {
+        return valida;
     }
 }

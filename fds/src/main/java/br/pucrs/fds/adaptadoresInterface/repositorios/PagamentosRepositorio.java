@@ -15,24 +15,28 @@ import br.pucrs.fds.frameworkdriver.interfaces.IPagamentosJPA;
 @Repository
 @Primary
 public class PagamentosRepositorio {
-    private IPagamentosJPA pagamento;
+    private IPagamentosJPA pagamentos;
 
     @Autowired
     public PagamentosRepositorio(IPagamentosJPA pagamento){
-        this.pagamento = pagamento;
+        this.pagamentos = pagamento;
     } 
        
     
     public List<PagamentoModel> findAll() {
-        return pagamento.findAll().stream().map(pag -> Adapter.pagamentosBD_to_Model(pag)).toList();
+        return pagamentos.findAll().stream().map(pag -> Adapter.pagamentosBD_to_Model(pag)).toList();
     }
 
     public PagamentoModel findById(long id) {
-        Optional<PagamentosBD> pagamentoOptional = pagamento.findById(id);
+        Optional<PagamentosBD> pagamentoOptional = pagamentos.findById(id);
         if (pagamentoOptional.isPresent()) {
             return Adapter.pagamentosBD_to_Model(pagamentoOptional.get());
         } else {
             return null; 
         }
+    }
+
+    public PagamentoModel salvaPagamento(PagamentoModel pagamento){
+        return Adapter.pagamentosBD_to_Model(pagamentos.save(Adapter.pagamentosModel_to_BD(pagamento)));
     }
 }

@@ -1,0 +1,22 @@
+POST http://localhost:8080/registrarpagamento
+content-type: application/json
+
+{
+    "codigo" : 1,
+    "dataPedido": "23/11/2024",
+    "valorPago": 109.0,
+    "desconto": "none"
+}
+
+POST http://localhost:8080/servcad/assinaturas
+content-type: application/json
+
+{
+    "ids":
+    [
+        1,
+        1
+    ]
+}
+
+GET http://localhost:8080/servcad/Listaassinaturas

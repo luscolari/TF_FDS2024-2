@@ -3,10 +3,13 @@ package br.pucrs.fds.adaptadoresInterface.controller;
 import br.pucrs.fds.aplicacao.dtos.AplicativoDTO;
 import br.pucrs.fds.aplicacao.dtos.AssinaturaDTO;
 import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
+import br.pucrs.fds.aplicacao.dtos.PedidoPagamentoDTO;
+import br.pucrs.fds.aplicacao.dtos.RespostaPagamentoDTO;
 import br.pucrs.fds.aplicacao.useCases.CadastroAssinaturaUC;
 import br.pucrs.fds.aplicacao.useCases.PegaAplicativosUC;
 import br.pucrs.fds.aplicacao.useCases.PegaAssinaturasUC;
 import br.pucrs.fds.aplicacao.useCases.PegaClientesUC;
+import br.pucrs.fds.aplicacao.useCases.RealizaPagamentoUC;
 import br.pucrs.fds.dominio.extras.TipoAssinatura;
 
 import java.util.List;
@@ -25,13 +28,15 @@ public class Controller {
     private PegaAplicativosUC aplicativos;
     private PegaAssinaturasUC assinaturas;
     private CadastroAssinaturaUC cadastros;
+    private RealizaPagamentoUC pagamentos;
 
     public Controller(PegaClientesUC clientes, PegaAplicativosUC aplicativos, PegaAssinaturasUC assinaturas,
-            CadastroAssinaturaUC cadastros) {
+            CadastroAssinaturaUC cadastros, RealizaPagamentoUC pagamentos) {
         this.clientes = clientes;
         this.aplicativos = aplicativos;
         this.assinaturas = assinaturas;
         this.cadastros = cadastros;
+        this.pagamentos = pagamentos;
     }
 
     @GetMapping("")
@@ -111,5 +116,13 @@ public class Controller {
     public boolean ativoOuNao (@PathVariable ("idAss") long idAss){
         return assinaturas.ativoOuNao(idAss);
     }
+
+    // Recebe pedido pagamento -> parcialmente completo
+    @PostMapping("/registrarpagamento")
+    @CrossOrigin(origins = "*")
+    public RespostaPagamentoDTO realizaPagamento(@RequestBody PedidoPagamentoDTO pedido) {        
+        return pagamentos.realizaPagamento(pedido);
+    }
+    
 
 }
