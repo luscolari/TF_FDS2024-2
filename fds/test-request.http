@@ -21,11 +21,11 @@ content-type: application/json
 
 [   1,  1  ]
 
-POST http://localhost:8080/aplicativos/atualizacusto/3
+POST http://localhost:8080/servcad/aplicativos/atualizacusto/3
 content-type: application/json
-    {
-    "custo" : 200
-    }
+
+200.0
+
 
 GET http://localhost:8080/assinvalida/4
 
