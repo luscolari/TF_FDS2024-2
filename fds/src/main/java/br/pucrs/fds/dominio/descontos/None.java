@@ -1,5 +1,4 @@
 package br.pucrs.fds.dominio.descontos;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -9,24 +8,23 @@ import br.pucrs.fds.adaptadoresInterface.interfacesRepositorios.IAssinaturasRead
 import br.pucrs.fds.aplicacao.descontos.IDesconto;
 import br.pucrs.fds.dominio.entidades.PedidoPagamentoModel;
 
-
 @Component
-public class DescontoAnual implements IDesconto{
+public class None implements IDesconto{
 
     // Absolutamente um caso perfeito para implementar usa interface para filtrar os métodos
     private IAssinaturasReadOnly assinaturas;
     private String nome;
 
-    public DescontoAnual (IAssinaturasReadOnly ass){
+    public None (IAssinaturasReadOnly ass){
         this.assinaturas = ass;
-        this.nome = "anual";
+        this.nome = "none";
     }
 
     @Override
     // Método assume que o pedido é de uma assinatura existente
     public double calculaPrecoComDesconto(PedidoPagamentoModel pedido) {
         
-        return assinaturas.findById(pedido.getCodigoAssinatura()).get().getAplicativo().getCMensal() * 12 * 0.6;
+        return assinaturas.findById(pedido.getCodigoAssinatura()).get().getAplicativo().getCMensal();
     }
 
     @Override
@@ -39,9 +37,8 @@ public class DescontoAnual implements IDesconto{
           String antigaData = assinaturas.findById(pedido.getCodigoAssinatura()).get().getFimV();
         LocalDate antData = LocalDate.parse(antigaData.replace("/", "-"),DateTimeFormatter.ofPattern("d-M-u"));
         if(antData.isBefore(LocalDate.now())){
-            return pedido.getDataPedido().plusDays(360);
+            return pedido.getDataPedido().plusDays(30);
         } 
-        return antData.plusDays(360);
-    }
-    
-}   
+        return antData.plusDays(30);
+    }    
+}

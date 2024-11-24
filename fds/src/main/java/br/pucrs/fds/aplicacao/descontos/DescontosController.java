@@ -1,5 +1,6 @@
 package br.pucrs.fds.aplicacao.descontos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,4 +44,12 @@ public class DescontosController {
         return politicasDesconto;
     }
     
+    public LocalDate calculaNovaData (PedidoPagamentoModel pedidoPag){
+        IDesconto desconto = encontraDesconto(pedidoPag.getDesconto());
+        if(desconto!= null){
+            return desconto.calculaNovoPrazo(pedidoPag);
+        } else {
+            return null;
+        }
+    }
 }

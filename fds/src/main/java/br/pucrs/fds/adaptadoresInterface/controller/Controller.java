@@ -46,7 +46,7 @@ public class Controller {
     @GetMapping("")
     @CrossOrigin(origins = "*")
     public String inicio() {
-        return "Teste";
+        return "Sistema de Controle de Assinaturas de Aplicativos \nDesenvolvido por: Beatriz Cavalari, Gabriel Schneider, Luisa Scolari e Leonardo Sehnm";
     }
 
     // fecho
@@ -70,7 +70,7 @@ public class Controller {
         return assinaturas.pegaAssinaturasServico();
     }
 
-    // nao terminado --> precisamos ver os tipos
+ 
     @GetMapping("/assinaturas/{tipo}")
     @CrossOrigin(origins = "*")
     public List<AssinaturaDTO> getListaAssinaturasTipo(@PathVariable("tipo") TipoAssinatura tipo) {
@@ -98,7 +98,6 @@ public class Controller {
     }
 
     // Body data --> para receber dados no corpo da mensagem
-    //arrumando para POST --> ainda não certo
     @PostMapping("/servcad/assinaturas")
     @CrossOrigin(origins = "*")
     public AssinaturaDTO cadasAssinatura(@RequestBody List<Long> ids) {

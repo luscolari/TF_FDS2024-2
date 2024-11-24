@@ -13,6 +13,7 @@ import br.pucrs.fds.adaptadoresInterface.repositorios.ClientesRepositorio;
 import br.pucrs.fds.dominio.entidades.AplicativoModel;
 import br.pucrs.fds.dominio.entidades.AssinaturaModel;
 import br.pucrs.fds.dominio.entidades.ClienteModel;
+import br.pucrs.fds.dominio.entidades.PagamentoModel;
 import br.pucrs.fds.dominio.extras.TipoAssinatura;
 
 @Service
@@ -20,11 +21,13 @@ public class ServicoCadastro {
     private ClientesRepositorio clientes;
     private AplicativosRepositorio aplicativos;
     private IAssinaturasBanco assinaturas;
+    private long next_idAss;
 
     public ServicoCadastro (ClientesRepositorio clientes, AplicativosRepositorio aplicativos, IAssinaturasBanco assinaturas){
         this.clientes = clientes;
         this.aplicativos = aplicativos;
         this.assinaturas = assinaturas;
+        this.next_idAss = assinaturas.findAll().size();
     }
 
     /* CLIENTES */
@@ -76,7 +79,7 @@ public class ServicoCadastro {
         s = dataExpiracao.toString();
         partes = s.split("-");
         String novaString2 = partes[2] + "/" + partes[1] + "/" + partes[0];
-        AssinaturaModel novaAssinatura = new AssinaturaModel(7, app, cliente, novaString, novaString2);
+        AssinaturaModel novaAssinatura = new AssinaturaModel(next_idAss++, app, cliente, novaString, novaString2);
         return assinaturas.cadastroAssinatura(Adapter.assinaturaModel_to_BD(novaAssinatura));
     }
 
@@ -96,5 +99,16 @@ public class ServicoCadastro {
         }
         boolean resposta = (ass.valida(LocalDate.now()) == TipoAssinatura.ATIVAS) ? true : false;
         return resposta;
+    }
+
+    public AssinaturaModel atualizarDataExpiracao(PagamentoModel pagamento, LocalDate novaData){
+        String s = novaData.toString();
+        String[] partes = s.split("-");
+        String novaString = partes[2] + "/" + partes[1] + "/" + partes[0];
+  
+
+        AssinaturaModel assinatura = pagamento.getAssinatura();
+        AssinaturaModel novaAssinatura = new AssinaturaModel(assinatura.getCodigo(), assinatura.getAplicativo(), assinatura.getCliente(), assinatura.getInicioV(), novaString);
+        return assinaturas.cadastroAssinatura(Adapter.assinaturaModel_to_BD(novaAssinatura));
     }
 }

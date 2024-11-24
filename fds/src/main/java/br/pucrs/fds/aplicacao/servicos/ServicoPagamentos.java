@@ -1,6 +1,7 @@
 package br.pucrs.fds.aplicacao.servicos;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,17 @@ public class ServicoPagamentos {
 
     public void salvaPagamento(PagamentoModel pagamento){
         pagamentos.salvaPagamento(pagamento);
+    }
+
+    public LocalDate novaData(PedidoPagamentoModel pedido){
+        Optional<AssinaturaModel> ass = assinaturas.findById(pedido.getCodigoAssinatura());
+        if(ass.isPresent()) {
+
+            if (descontos.verificaSeDescontoExiste(pedido.getDesconto())){
+                return descontos.calculaNovaData(pedido);
+            }
+        }
+        return null;
     }
 
     public DescontosController debugDescontosController(){
