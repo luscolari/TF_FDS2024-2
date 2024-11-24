@@ -19,7 +19,7 @@ public class DescontosController {
 
     public Boolean verificaSeDescontoExiste(String nomeDesconto){
         for (IDesconto iDesconto : politicasDesconto) {
-            if(iDesconto.getNomeDesconto() == nomeDesconto){
+            if(iDesconto.getNomeDesconto().equals(nomeDesconto)){
                 return true;
             } 
         }
@@ -35,7 +35,7 @@ public class DescontosController {
 
     private IDesconto encontraDesconto(String nomeDesconto){
         for (IDesconto iDesconto : politicasDesconto) {
-            if(iDesconto.getNomeDesconto() == nomeDesconto) return iDesconto;
+            if(iDesconto.getNomeDesconto().equals(nomeDesconto)) return iDesconto;
         }
         return null;
     }
