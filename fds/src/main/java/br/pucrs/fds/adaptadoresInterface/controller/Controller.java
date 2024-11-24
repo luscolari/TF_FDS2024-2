@@ -46,58 +46,24 @@ public class Controller {
     @GetMapping("")
     @CrossOrigin(origins = "*")
     public String inicio() {
-        return "Sistema de Controle de Assinaturas de Aplicativos \nDesenvolvido por: Beatriz Cavalari, Gabriel Schneider, Luisa Scolari e Leonardo Sehnm";
+        return "Sistema de Controle de Assinaturas de Aplicativos --> Desenvolvido por: Beatriz Cavalari, Gabriel Schneider, Luisa Scolari e Leonardo Sehnem";
     }
 
-    // fecho
+    //Lista com todos os clientes cadastrados
     @GetMapping("/servcad/clientes")
     @CrossOrigin(origins = "*")
     public List<ClienteDTO> getListaClientes() {
         return clientes.pegaClienteServico();
     }
 
-    // fecho
+    // Lista com todos os aplicativos cadastrados
     @GetMapping("/servcad/aplicativos")
     @CrossOrigin(origins = "*")
     public List<AplicativoDTO> getListaAplicativos() {
         return aplicativos.pegaAppsServico();
     }
 
-    /* Para fins de debug */
-    @GetMapping("/servcad/Listaassinaturas")
-    @CrossOrigin(origins = "*")
-    public List<AssinaturaDTO> getListaAssinaturas() {
-        return assinaturas.pegaAssinaturasServico();
-    }
-
- 
-    @GetMapping("/assinaturas/{tipo}")
-    @CrossOrigin(origins = "*")
-    public List<AssinaturaDTO> getListaAssinaturasTipo(@PathVariable("tipo") TipoAssinatura tipo) {
-        return assinaturas.pegaAssinaturasTipoServico(tipo);
-    }
-
-    // feito
-    @GetMapping("/servcad/asscli/{id}")
-    @CrossOrigin(origins = "*")
-    public List<AssinaturaDTO> getListaAssinaturasCliente(@PathVariable("id") long id) {
-        return assinaturas.pegaAssinaturasClienteServico(id);
-    }
-
-    // feito
-    @GetMapping("/servcad/assapp/{id}")
-    @CrossOrigin(origins = "*")
-    public List<AssinaturaDTO> getListaAssinaturasAplicativo(@PathVariable("id") long id) {
-        return assinaturas.pegaAssinaturasAplicativoServico(id);
-    }
-
-    @GetMapping("/acharcliente/{id}")
-    @CrossOrigin(origins = "*")
-    public ClienteDTO acharCliente(@PathVariable("id") long id) {
-        return clientes.acharCliente(id);
-    }
-
-    // Body data --> para receber dados no corpo da mensagem
+    // Cria uma assinatura
     @PostMapping("/servcad/assinaturas")
     @CrossOrigin(origins = "*")
     public AssinaturaDTO cadasAssinatura(@RequestBody List<Long> ids) {
@@ -107,25 +73,62 @@ public class Controller {
         return cadastros.cadastroAssinatura(idCliente, idApp);
     }
 
-    @PostMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}")
+     // Atualizar o custo mensal do aplicativo
+     @PostMapping("/servcad/aplicativos/atualizacusto/{idAplicativo}")
+     @CrossOrigin(origins = "*")
+     public AplicativoDTO atualizaCustoPOST(@PathVariable ("idAplicativo") long idAplicativo, @RequestBody double custo) throws Exception {
+         return cadastros.atualizaCusto(idAplicativo, custo);
+     }
+
+    // Para fins de debug + lista com todas as assinaturas cadastradas
+    @GetMapping("/servcad/Listaassinaturas")
     @CrossOrigin(origins = "*")
-    public AplicativoDTO atualizaCustoPOST(@PathVariable ("idAplicativo") long idAplicativo, @RequestBody double custo) throws Exception {
-        return cadastros.atualizaCusto(idAplicativo, custo);
+    public List<AssinaturaDTO> getListaAssinaturas() {
+        return assinaturas.pegaAssinaturasServico();
     }
 
+    //Retorna a lista com todas as assinaturas confirme o tipo
+    @GetMapping("/assinaturas/{tipo}")
+    @CrossOrigin(origins = "*")
+    public List<AssinaturaDTO> getListaAssinaturasTipo(@PathVariable("tipo") TipoAssinatura tipo) {
+        return assinaturas.pegaAssinaturasTipoServico(tipo);
+    }
 
+    // Retorna a lista das assinaturas do cliente informado
+    @GetMapping("/servcad/asscli/{id}")
+    @CrossOrigin(origins = "*")
+    public List<AssinaturaDTO> getListaAssinaturasCliente(@PathVariable("id") long id) {
+        return assinaturas.pegaAssinaturasClienteServico(id);
+    }
+
+    // Retorna a lista de assinaturas de um aplicativo
+    @GetMapping("/servcad/assapp/{id}")
+    @CrossOrigin(origins = "*")
+    public List<AssinaturaDTO> getListaAssinaturasAplicativo(@PathVariable("id") long id) {
+        return assinaturas.pegaAssinaturasAplicativoServico(id);
+    }
+
+     // Solicita o registro de um pagamento
+     @PostMapping("/registrarpagamento")
+     @CrossOrigin(origins = "*")
+     public RespostaPagamentoDTO realizaPagamento(@RequestBody PedidoPagamentoDTO pedido) {        
+         return pagamentos.realizaPagamento(pedido);
+     }
+
+    // // Para fins de debug + retorna um cliente
+    @GetMapping("/buscarcliente/{id}")
+    @CrossOrigin(origins = "*")
+    public ClienteDTO acharCliente(@PathVariable("id") long id) {
+        return clientes.acharCliente(id);
+    }
+
+    // Retorna se a assinatura questionada permanece ativa
     @GetMapping("/assinvalida/{idAss}")
     @CrossOrigin(origins = "*")
     public boolean ativoOuNao (@PathVariable ("idAss") long idAss){
         return assinaturas.ativoOuNao(idAss);
     }
 
-    // Recebe pedido pagamento -> parcialmente completo
-    @PostMapping("/registrarpagamento")
-    @CrossOrigin(origins = "*")
-    public RespostaPagamentoDTO realizaPagamento(@RequestBody PedidoPagamentoDTO pedido) {        
-        return pagamentos.realizaPagamento(pedido);
-    }
     
     @GetMapping("/debug")
     public String getMethodName() {
