@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
+import br.pucrs.fds.adaptadoresInterface.interfacesRepositorios.IAssinaturasBanco;
+import br.pucrs.fds.adaptadoresInterface.interfacesRepositorios.IAssinaturasReadOnly;
 import br.pucrs.fds.dominio.entidades.AssinaturaModel;
 import br.pucrs.fds.frameworkdriver.instancias.AssinaturaBD;
 import br.pucrs.fds.frameworkdriver.interfaces.IAssinaturaJPA;
@@ -15,7 +17,7 @@ import java.util.Optional;
 
 @Repository
 @Primary
-public class AssinaturasRepositorio {
+public class AssinaturasRepositorio implements IAssinaturasReadOnly, IAssinaturasBanco{
     private IAssinaturaJPA assinatura;
 
     @Autowired

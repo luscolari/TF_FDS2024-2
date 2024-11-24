@@ -5,12 +5,12 @@ import java.time.LocalDate;
 public class PagamentoModel {
     private long codigo;
     private AssinaturaModel assinatura;
-    private float valorPago;
+    private double valorPago;
     private LocalDate dataPagamento;
     private String promocao;
     private boolean invalido;
 
-    public PagamentoModel(long codigo, AssinaturaModel assinatura, float valorPago, LocalDate dataPagamento, String promocao) {
+    public PagamentoModel(long codigo, AssinaturaModel assinatura, double valorPago, LocalDate dataPagamento, String promocao) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
@@ -27,7 +27,7 @@ public class PagamentoModel {
         return assinatura;
     }
 
-    public float getValorPago() {
+    public double getValorPago() {
         return valorPago;
     }
 

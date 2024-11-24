@@ -3,10 +3,10 @@ package br.pucrs.fds.aplicacao.dtos;
 public class PedidoPagamentoDTO {
     private long codigo;
     private String dataPedido;
-    private float valorPago;
+    private double valorPago;
     private String desconto;
 
-    public PedidoPagamentoDTO(long codigo, String dataPedido, float valorPago, String desconto) {
+    public PedidoPagamentoDTO(long codigo, String dataPedido, double valorPago, String desconto) {
         this.codigo = codigo;
         this.dataPedido = dataPedido;
         this.valorPago = valorPago;
@@ -21,7 +21,7 @@ public class PedidoPagamentoDTO {
         return dataPedido;
     }
 
-    public float getValorPago() {
+    public double getValorPago() {
         return valorPago;
     }
 

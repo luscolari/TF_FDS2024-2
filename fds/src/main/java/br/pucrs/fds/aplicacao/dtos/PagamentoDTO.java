@@ -5,11 +5,11 @@ import java.time.LocalDate;
 public class PagamentoDTO {
     private long codigo;
     private AssinaturaDTO assinatura;
-    private float valorPago;
+    private double valorPago;
     private LocalDate dataPagamento;
     private String promocao;
 
-    public PagamentoDTO(long codigo, AssinaturaDTO assinatura, float valorPago, LocalDate dataPagamento, String promocao) {
+    public PagamentoDTO(long codigo, AssinaturaDTO assinatura, double valorPago, LocalDate dataPagamento, String promocao) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
@@ -25,7 +25,7 @@ public class PagamentoDTO {
         return assinatura;
     }
 
-    public float getValorPago() {
+    public double getValorPago() {
         return valorPago;
     }
 

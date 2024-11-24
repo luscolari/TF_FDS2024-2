@@ -3,6 +3,7 @@ package br.pucrs.fds.aplicacao.useCases;
 import org.springframework.stereotype.Component;
 
 import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
+import br.pucrs.fds.aplicacao.descontos.DescontosController;
 import br.pucrs.fds.aplicacao.dtos.PedidoPagamentoDTO;
 import br.pucrs.fds.aplicacao.dtos.RespostaPagamentoDTO;
 import br.pucrs.fds.aplicacao.servicos.ServicoPagamentos;
@@ -26,6 +27,14 @@ public class RealizaPagamentoUC {
         }
         pagamentos.salvaPagamento(pagamento);
         return new RespostaPagamentoDTO(TipoPagamento.PAGAMENTO_OK, pagamento.getDataPagamento(), 0);
+    }
+
+    public DescontosController debugDescontosController(){
+        return pagamentos.debugDescontosController();
+    }
+
+    public Boolean debugVerificaDescontoExiste(String n){
+        return pagamentos.debugVerificaDescontoExiste(n);
     }
 
 }

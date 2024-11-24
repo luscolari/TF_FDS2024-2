@@ -1,5 +1,6 @@
 package br.pucrs.fds.adaptadoresInterface.controller;
 
+import br.pucrs.fds.aplicacao.descontos.DescontosController;
 import br.pucrs.fds.aplicacao.dtos.AplicativoDTO;
 import br.pucrs.fds.aplicacao.dtos.AssinaturaDTO;
 import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
@@ -10,6 +11,7 @@ import br.pucrs.fds.aplicacao.useCases.PegaAplicativosUC;
 import br.pucrs.fds.aplicacao.useCases.PegaAssinaturasUC;
 import br.pucrs.fds.aplicacao.useCases.PegaClientesUC;
 import br.pucrs.fds.aplicacao.useCases.RealizaPagamentoUC;
+import br.pucrs.fds.dominio.entidades.PedidoPagamentoModel;
 import br.pucrs.fds.dominio.extras.TipoAssinatura;
 
 import java.util.List;
@@ -20,6 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @RestController
 public class Controller {
@@ -124,5 +128,23 @@ public class Controller {
         return pagamentos.realizaPagamento(pedido);
     }
     
+    @GetMapping("/debug")
+    public String getMethodName() {
+        return pagamentos.debugDescontosController().getPoliticasDesconto().get(0).getNomeDesconto();
+    }
 
+    @GetMapping("/debug/{s}")
+    public Boolean getMethodName(@PathVariable("s") String s) {
+        return pagamentos.debugVerificaDescontoExiste(s);
+    }
+
+    @PostMapping("/debug")
+    public double getMethodName(@RequestBody PedidoPagamentoModel p) {
+        return pagamentos.debugDescontosController().getPoliticasDesconto().get(0).calculaPrecoComDesconto(p);
+    }
+    @PostMapping("/debu2")
+    public String getMethodNam(@RequestBody PedidoPagamentoModel p) {
+        return p.getDesconto();
+    }
+    
 }

@@ -3,6 +3,8 @@ package br.pucrs.fds.adaptadoresInterface.adapter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+import org.springframework.cglib.core.Local;
+
 import br.pucrs.fds.aplicacao.dtos.AplicativoDTO;
 import br.pucrs.fds.aplicacao.dtos.AssinaturaDTO;
 import br.pucrs.fds.aplicacao.dtos.ClienteDTO;
@@ -12,6 +14,7 @@ import br.pucrs.fds.dominio.entidades.AssinaturaModel;
 import br.pucrs.fds.dominio.entidades.ClienteModel;
 import br.pucrs.fds.dominio.entidades.PagamentoModel;
 import br.pucrs.fds.dominio.entidades.PedidoPagamentoModel;
+import br.pucrs.fds.dominio.extras.TipoAssinatura;
 import br.pucrs.fds.frameworkdriver.instancias.AplicativoBD;
 import br.pucrs.fds.frameworkdriver.instancias.AssinaturaBD;
 import br.pucrs.fds.frameworkdriver.instancias.ClienteBD;
@@ -57,11 +60,13 @@ public class Adapter {
     }
 
     public static AssinaturaDTO assinaturaModel_to_DTO(AssinaturaModel bd){
-        return new AssinaturaDTO(bd.getCodigo(),
-                                   Adapter.aplicativoModel_to_DTO(bd.getAplicativo()),
-                                   Adapter.clienteModel_to_DTO(bd.getCliente()),
-                                   bd.getInicioV(),
-                                   bd.getFimV());
+        AssinaturaDTO ass = new AssinaturaDTO(bd.getCodigo(),
+                                              Adapter.aplicativoModel_to_DTO(bd.getAplicativo()),
+                                              Adapter.clienteModel_to_DTO(bd.getCliente()),
+                                              bd.getInicioV(),
+                                              bd.getFimV());
+        ass.setAtiva(bd.valida(LocalDate.now()));
+        return ass;
     }
 
     public static AssinaturaBD assinaturaModel_to_BD(AssinaturaModel bd){

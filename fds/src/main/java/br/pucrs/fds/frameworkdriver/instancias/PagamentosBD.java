@@ -13,12 +13,12 @@ public class PagamentosBD {
     private long codigo;
     @ManyToOne
     private AssinaturaBD assinatura;
-    private float valorPago;
+    private double valorPago;
     private LocalDate dataPagamento;
     private String promocao;
     private Boolean valida;
 
-    public PagamentosBD(long codigo, AssinaturaBD assinatura, float valorPago, LocalDate dataPagamento, String promocao, Boolean valida) {
+    public PagamentosBD(long codigo, AssinaturaBD assinatura, double valorPago, LocalDate dataPagamento, String promocao, Boolean valida) {
         this.codigo = codigo;
         this.assinatura = assinatura;
         this.valorPago = valorPago;
@@ -37,7 +37,7 @@ public class PagamentosBD {
         return assinatura;
     }
 
-    public float getValorPago() {
+    public double getValorPago() {
         return valorPago;
     }
 
@@ -48,7 +48,7 @@ public class PagamentosBD {
     public String getPromocao() {
         return promocao;
     }
-    
+
     public Boolean isValida() {
         return valida;
     }

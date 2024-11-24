@@ -3,27 +3,27 @@ package br.pucrs.fds.dominio.entidades;
 import java.time.LocalDate;
 
 public class PedidoPagamentoModel {
-    private long codigo;
+    private long codigoAssinatura;
     private LocalDate dataPedido;
-    private float valorPago;
+    private double valorPago;
     private String desconto;
 
-    public PedidoPagamentoModel(long codigo, LocalDate dataPedido, float valorPago, String desconto) {
-        this.codigo = codigo;
+    public PedidoPagamentoModel(long codigo, LocalDate dataPedido, double valorPago, String desconto) {
+        this.codigoAssinatura = codigo;
         this.dataPedido = dataPedido;
         this.valorPago = valorPago;
         this.desconto = desconto;
     }
 
-    public long getCodigo() {
-        return codigo;
+    public long getCodigoAssinatura() {
+        return codigoAssinatura;
     }
 
     public LocalDate getDataPedido() {
         return dataPedido;
     }
 
-    public float getValorPago() {
+    public double getValorPago() {
         return valorPago;
     }
 
@@ -33,6 +33,6 @@ public class PedidoPagamentoModel {
 
     @Override
     public String toString() {
-        return "Pedido Pagamento [ Código: " + codigo + ", Data do Pedido: " + dataPedido + ", Valor Pago: " + valorPago + "]";
+        return "Pedido Pagamento [ Código: " + codigoAssinatura + ", Data do Pedido: " + dataPedido + ", Valor Pago: " + valorPago + "]";
     }
 }

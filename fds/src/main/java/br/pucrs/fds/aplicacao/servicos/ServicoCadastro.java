@@ -7,8 +7,8 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import br.pucrs.fds.adaptadoresInterface.adapter.Adapter;
+import br.pucrs.fds.adaptadoresInterface.interfacesRepositorios.IAssinaturasBanco;
 import br.pucrs.fds.adaptadoresInterface.repositorios.AplicativosRepositorio;
-import br.pucrs.fds.adaptadoresInterface.repositorios.AssinaturasRepositorio;
 import br.pucrs.fds.adaptadoresInterface.repositorios.ClientesRepositorio;
 import br.pucrs.fds.dominio.entidades.AplicativoModel;
 import br.pucrs.fds.dominio.entidades.AssinaturaModel;
@@ -19,9 +19,9 @@ import br.pucrs.fds.dominio.extras.TipoAssinatura;
 public class ServicoCadastro {
     private ClientesRepositorio clientes;
     private AplicativosRepositorio aplicativos;
-    private AssinaturasRepositorio assinaturas;
+    private IAssinaturasBanco assinaturas;
 
-    public ServicoCadastro (ClientesRepositorio clientes, AplicativosRepositorio aplicativos, AssinaturasRepositorio assinaturas){
+    public ServicoCadastro (ClientesRepositorio clientes, AplicativosRepositorio aplicativos, IAssinaturasBanco assinaturas){
         this.clientes = clientes;
         this.aplicativos = aplicativos;
         this.assinaturas = assinaturas;

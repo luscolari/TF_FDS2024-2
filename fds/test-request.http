@@ -4,8 +4,8 @@ content-type: application/json
 {
     "codigo" : 1,
     "dataPedido": "23/11/2024",
-    "valorPago": 109.0,
-    "desconto": "none"
+    "valorPago": 14392.8,
+    "desconto": "anual"
 }
 
 POST http://localhost:8080/servcad/assinaturas
@@ -14,3 +14,29 @@ content-type: application/json
 [   1,  1  ]
 
 GET http://localhost:8080/servcad/Listaassinaturas
+
+GET http://localhost:8080/servcad/assapp/1
+
+GET http://localhost:8080/debug
+
+GET http://localhost:8080/debug/anual
+
+POST http://localhost:8080/debug
+content-type: application/json
+
+{
+    "codigo" : 1,
+    "dataPedido": "2024-11-20",
+    "valorPago": 14392.8,
+    "desconto": "anual"
+}
+
+POST http://localhost:8080/debu2
+content-type: application/json
+
+{
+    "codigo" : 1,
+    "dataPedido": "2024-11-20",
+    "valorPago": 14392.8,
+    "desconto": "anual"
+}
